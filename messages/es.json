@@ -8,14 +8,21 @@
   },
   "home": {
     "title": "Barichara, el pueblo más lindo de Colombia",
-    "subtitle": "Descubre dónde alojarte, comer y explorar en Barichara, Santander.",
+    "subtitle": "Caminos de piedra, cañones, cascadas y artesanía: todo lo que puedes hacer en Barichara, Santander.",
+    "exploreCta": "Ver qué hacer",
+    "stayTitle": "¿Ya decidiste quedarte?",
+    "staySubtitle": "Encuentra dónde alojarte y dónde comer en Barichara.",
     "searchPlaceholder": "Busca un hotel, restaurante o comercio",
-    "exploreCta": "Explorar el directorio",
+    "searchCta": "Buscar",
     "categories": {
       "hotel": "Hoteles",
       "restaurante": "Restaurantes",
       "comercio": "Comercios"
     }
+  },
+  "attractions": {
+    "sectionTitle": "Qué hacer en Barichara",
+    "sectionSubtitle": "Los planes imperdibles del pueblo más lindo de Colombia, antes de pensar en dónde dormir o comer."
   },
   "directory": {
     "title": "Directorio de Barichara",
