@@ -7,15 +7,18 @@ export type Attraction = {
   emoji: string;
 };
 
+// Todos los datos verificados por fuente — ver tabla de fuentes entregada
+// junto con este archivo. Solo atractivos dentro del municipio de Barichara
+// (Guane es un corregimiento del propio municipio, no un pueblo aparte).
 export const attractions: Attraction[] = [
   {
     slug: "camino-real-guane",
     title_es: "Camino Real a Guane",
     title_en: "Camino Real to Guane",
     description_es:
-      "Sendero empedrado de 10 km, construido por los indígenas Guane, que conecta Barichara con el pueblo de Guane entre miradores sobre el cañón del río Suárez.",
+      "Sendero de piedra de cerca de 9 km que predata la conquista española, reconstruido en 1864 por el ingeniero Geo von Lengerke. Conecta Barichara con el corregimiento de Guane entre vistas del cañón del río Suárez; caminarlo completo toma entre 2 y 3 horas.",
     description_en:
-      "A 10 km stone-paved trail, built by the Guane people, linking Barichara to the village of Guane past viewpoints over the Suárez river canyon.",
+      "A roughly 9 km stone trail predating the Spanish conquest, rebuilt in 1864 by engineer Geo von Lengerke. It links Barichara with the Guane township past views of the Suárez river canyon; walking it end to end takes 2-3 hours.",
     emoji: "🥾",
   },
   {
@@ -23,49 +26,49 @@ export const attractions: Attraction[] = [
     title_es: "Mirador El Salto del Mico",
     title_en: "El Salto del Mico Viewpoint",
     description_es:
-      "A un kilómetro de la catedral, uno de los miradores más populares del pueblo, con vistas abiertas sobre las montañas y el río Suárez, ideal al atardecer.",
+      "A pocos minutos a pie del parque principal, uno de los miradores más visitados de Santander, con vista panorámica del cañón del río Suárez y las montañas de la región.",
     description_en:
-      "A kilometer from the cathedral, one of the town's most popular viewpoints, with open views over the mountains and the Suárez river — best at sunset.",
+      "A few minutes' walk from the main square, one of Santander's most-visited viewpoints, with panoramic views of the Suárez river canyon and the surrounding mountains.",
     emoji: "🌄",
   },
   {
-    slug: "cascada-juan-curi",
-    title_es: "Cascada de Juan Curí",
-    title_en: "Juan Curí Waterfall",
+    slug: "guane-museo",
+    title_es: "Guane y su Museo Paleontológico y Arqueológico",
+    title_en: "Guane & its Paleontological and Archaeological Museum",
     description_es:
-      "A pocos minutos de Barichara, una caída de agua de más de 200 metros con pozos naturales donde se puede nadar, rodeada de bosque húmedo tropical.",
+      "Corregimiento de Barichara a unos 20 minutos en carro, con calles de piedra amarilla talladas a mano. Su museo, en la plaza principal, conserva fósiles marinos y piezas de la cultura indígena Guane.",
     description_en:
-      "A short drive from Barichara, a waterfall over 200 meters high with natural pools you can swim in, surrounded by tropical forest.",
-    emoji: "💦",
+      "A township of Barichara about 20 minutes away by car, with hand-carved yellow stone streets. Its museum, on the main square, holds marine fossils and artifacts from the indigenous Guane culture.",
+    emoji: "🦴",
   },
   {
-    slug: "parque-chicamocha",
-    title_es: "Cañón y Parque Nacional del Chicamocha",
-    title_en: "Chicamocha Canyon & National Park",
+    slug: "catedral-inmaculada-concepcion",
+    title_es: "Catedral de la Inmaculada Concepción",
+    title_en: "Immaculate Conception Cathedral",
     description_es:
-      "A poca distancia en carro, el segundo cañón más grande del mundo: teleférico, parapente y rafting sobre uno de los paisajes más impresionantes de Santander.",
+      "Construida hacia 1838 frente al parque principal, en piedra amarilla de canteras de la región. Sus 10 columnas monolíticas de 5 metros sostienen un techo de madera tallada y un altar mayor recubierto en oro.",
     description_en:
-      "A short drive away, the world's second-largest canyon: cable car, paragliding and rafting over one of Santander's most striking landscapes.",
-    emoji: "🪂",
+      "Built around 1838 facing the main square, in yellow stone from regional quarries. Its ten 5-meter monolithic columns support a carved wooden ceiling and a gold-leafed main altar.",
+    emoji: "⛪",
   },
   {
     slug: "calle-real",
     title_es: "Calle Real y arquitectura colonial",
     title_en: "Calle Real & colonial architecture",
     description_es:
-      "Calles empedradas, fachadas blancas y techos de teja entre las mejor conservadas de Colombia — Monumento Nacional desde 1978 y escenario perfecto para caminar sin rumbo.",
+      "El centro histórico de Barichara es Monumento Nacional desde 1978 (Decreto 1654). Calles empedradas, fachadas blancas y techos de teja, entre la arquitectura colonial mejor conservada de Colombia.",
     description_en:
-      "Cobblestone streets, whitewashed façades and tiled roofs among the best preserved in Colombia — a National Monument since 1978 and perfect for wandering.",
+      "Barichara's historic center has been a National Monument since 1978 (Decree 1654). Cobblestone streets, whitewashed façades and tiled roofs, among the best-preserved colonial architecture in Colombia.",
     emoji: "🏘️",
   },
   {
     slug: "talleres-artesania",
-    title_es: "Talleres de talabartería y talla en piedra",
-    title_en: "Leatherwork & stone-carving workshops",
+    title_es: "Talleres de talla en piedra y talabartería",
+    title_en: "Stone-carving & leatherwork workshops",
     description_es:
-      "Barichara es cuna de la talabartería en cuero y la talla en piedra. Varios talleres abren sus puertas para ver a los artesanos trabajar y llevarse una pieza única.",
+      "Más de 100 artesanos tallan a diario la piedra arenisca de la provincia Guanentina, un oficio heredado de los indígenas Guane. Varios talleres a las afueras del pueblo reciben visitantes.",
     description_en:
-      "Barichara is a birthplace of leatherwork and stone carving. Several workshops open their doors so visitors can watch artisans at work and take home a one-of-a-kind piece.",
+      "Over 100 artisans carve the Guanentina province's sandstone daily, a craft inherited from the indigenous Guane people. Several workshops on the edge of town welcome visitors.",
     emoji: "🪵",
   },
 ];
