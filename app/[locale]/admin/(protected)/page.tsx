@@ -4,6 +4,12 @@ import type { Business } from "@/lib/types";
 import { deleteBusiness } from "../actions";
 import ConfirmSubmitButton from "@/components/ConfirmSubmitButton";
 
+const STATUS_LABEL: Record<Business["status"], string> = {
+  borrador: "Borrador",
+  aprobado: "Aprobado",
+  rechazado: "Rechazado",
+};
+
 export default async function AdminDashboard({
   params,
 }: {
@@ -59,12 +65,15 @@ export default async function AdminDashboard({
                   <td className="px-4 py-3">
                     <span
                       className={`rounded-full px-2.5 py-1 text-xs font-medium ${
-                        business.active
+                        business.status === "aprobado"
                           ? "bg-sage/15 text-sage"
-                          : "bg-foreground/10 text-foreground/50"
+                          : business.status === "rechazado"
+                            ? "bg-red-100 text-red-700"
+                            : "bg-foreground/10 text-foreground/50"
                       }`}
                     >
-                      {business.active ? "Activo" : "Inactivo"}
+                      {STATUS_LABEL[business.status]}
+                      {business.is_sample ? " · ejemplo" : ""}
                     </span>
                   </td>
                   <td

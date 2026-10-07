@@ -33,7 +33,7 @@ export default async function DirectoryPage({
   let query = supabase
     .from("businesses")
     .select("*")
-    .eq("active", true)
+    .eq("status", "aprobado")
     .order("name");
 
   if (category && categories.includes(category as Category)) {

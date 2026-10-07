@@ -83,6 +83,22 @@
     "privacyPolicy": "Privacy policy",
     "contact": "Contact"
   },
+  "status": {
+    "borrador": "Draft",
+    "aprobado": "Approved",
+    "rechazado": "Rejected"
+  },
+  "demo": {
+    "title": "Private preview",
+    "subtitle": "This version shows businesses that are not published yet.",
+    "passwordLabel": "Password",
+    "enter": "Enter",
+    "wrongPassword": "Wrong password.",
+    "banner": "Private preview: drafts are not public.",
+    "exit": "Exit",
+    "listTitle": "Draft and approved businesses",
+    "previewNotice": "Preview: this listing is not published yet."
+  },
   "privacy": {
     "title": "Privacy policy",
     "updated": "Last updated: October 2026"

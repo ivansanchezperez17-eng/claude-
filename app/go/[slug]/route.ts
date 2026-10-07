@@ -18,6 +18,7 @@ export async function GET(
     .from("businesses")
     .select("id, whatsapp")
     .eq("slug", slug)
+    .eq("status", "aprobado")
     .maybeSingle();
 
   if (!business?.whatsapp) {

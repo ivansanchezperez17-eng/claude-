@@ -83,6 +83,22 @@
     "privacyPolicy": "Política de privacidad",
     "contact": "Contacto"
   },
+  "status": {
+    "borrador": "Borrador",
+    "aprobado": "Aprobado",
+    "rechazado": "Rechazado"
+  },
+  "demo": {
+    "title": "Vista previa privada",
+    "subtitle": "Esta versión muestra negocios que aún no están publicados.",
+    "passwordLabel": "Contraseña",
+    "enter": "Entrar",
+    "wrongPassword": "Contraseña incorrecta.",
+    "banner": "Vista previa privada: los borradores no son públicos.",
+    "exit": "Salir",
+    "listTitle": "Negocios en borrador y aprobados",
+    "previewNotice": "Vista previa: esta ficha todavía no está publicada."
+  },
   "privacy": {
     "title": "Política de privacidad",
     "updated": "Última actualización: octubre de 2026"

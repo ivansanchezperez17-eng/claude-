@@ -37,7 +37,7 @@ export async function POST(request: NextRequest) {
   const { data: businesses } = await supabase
     .from("businesses")
     .select("*")
-    .eq("active", true);
+    .eq("status", "aprobado");
 
   const system = buildSystemPrompt(locale, (businesses ?? []) as Business[]);
 

@@ -37,6 +37,17 @@ export async function signOut() {
   redirect(`/admin/login`);
 }
 
+const STATUSES = ["borrador", "aprobado", "rechazado"] as const;
+const PLANS = ["basico", "destacado", "destacado_bilingue"] as const;
+
+function oneOf<T extends string, F>(
+  value: FormDataEntryValue | null,
+  allowed: readonly T[],
+  fallback: F,
+): T | F {
+  return allowed.includes(value as T) ? (value as T) : fallback;
+}
+
 function businessFields(formData: FormData) {
   return {
     name: formData.get("name") as string,
@@ -55,7 +66,8 @@ function businessFields(formData: FormData) {
     instagram: (formData.get("instagram") as string) || null,
     source_url: (formData.get("source_url") as string) || null,
     is_sample: formData.get("is_sample") === "on",
-    active: formData.get("active") === "on",
+    status: oneOf(formData.get("status"), STATUSES, "borrador"),
+    plan: oneOf(formData.get("plan"), PLANS, null),
     next_payment_due: (formData.get("next_payment_due") as string) || null,
   };
 }

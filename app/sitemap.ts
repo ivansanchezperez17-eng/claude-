@@ -9,7 +9,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const { data: businesses } = await supabase
     .from("businesses")
     .select("slug, created_at")
-    .eq("active", true);
+    .eq("status", "aprobado");
 
   const staticPaths = ["", "directorio", "negocios", "politica-privacidad"];
 

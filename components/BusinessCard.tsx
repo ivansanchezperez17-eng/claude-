@@ -6,19 +6,24 @@ import type { Business, BusinessPhoto } from "@/lib/types";
 export default function BusinessCard({
   business,
   photo,
+  basePath = "/negocio",
+  showStatus = false,
 }: {
   business: Business;
   photo?: BusinessPhoto;
+  basePath?: "/negocio" | "/demo";
+  showStatus?: boolean;
 }) {
   const locale = useLocale();
   const t = useTranslations("home.categories");
   const tDirectory = useTranslations("directory");
+  const tStatus = useTranslations("status");
   const description =
     locale === "en" ? business.description_en : business.description_es;
 
   return (
     <Link
-      href={`/negocio/${business.slug}`}
+      href={`${basePath}/${business.slug}`}
       className="group flex flex-col overflow-hidden rounded-2xl border border-stone bg-white shadow-sm transition-all hover:-translate-y-1 hover:shadow-md"
     >
       <div className="aspect-[4/3] w-full bg-stone">
@@ -40,10 +45,22 @@ export default function BusinessCard({
           <span className="text-xs font-medium uppercase tracking-wide text-sage">
             {t(business.category)}
           </span>
-          {business.is_sample && (
+          {business.is_sample ? (
             <span className="rounded-full bg-foreground/10 px-2 py-0.5 text-[10px] font-medium uppercase tracking-wide text-foreground/50">
               {tDirectory("sampleBadge")}
             </span>
+          ) : (
+            showStatus && (
+              <span
+                className={`rounded-full px-2 py-0.5 text-[10px] font-medium uppercase tracking-wide ${
+                  business.status === "aprobado"
+                    ? "bg-sage/15 text-sage"
+                    : "bg-clay/15 text-clay-dark"
+                }`}
+              >
+                {tStatus(business.status)}
+              </span>
+            )
           )}
         </div>
         <h3 className="font-serif text-lg text-clay-dark">{business.name}</h3>

@@ -160,6 +160,29 @@ export default function BusinessForm({
       </Field>
 
       <div className="grid gap-5 sm:grid-cols-3">
+        <Field label="Estado (solo «Aprobado» se ve en público)">
+          <select
+            name="status"
+            defaultValue={business?.status ?? "borrador"}
+            className="w-full rounded-lg border border-stone px-3 py-2 outline-none focus:border-clay"
+          >
+            <option value="borrador">Borrador</option>
+            <option value="aprobado">Aprobado</option>
+            <option value="rechazado">Rechazado</option>
+          </select>
+        </Field>
+        <Field label="Plan">
+          <select
+            name="plan"
+            defaultValue={business?.plan ?? ""}
+            className="w-full rounded-lg border border-stone px-3 py-2 outline-none focus:border-clay"
+          >
+            <option value="">Sin plan</option>
+            <option value="basico">Básico</option>
+            <option value="destacado">Destacado</option>
+            <option value="destacado_bilingue">Destacado bilingüe</option>
+          </select>
+        </Field>
         <Field label="Próximo pago">
           <input
             type="date"
@@ -168,15 +191,9 @@ export default function BusinessForm({
             className="w-full rounded-lg border border-stone px-3 py-2 outline-none focus:border-clay"
           />
         </Field>
-        <label className="flex items-center gap-2 self-end pb-2 text-sm font-medium">
-          <input
-            type="checkbox"
-            name="active"
-            defaultChecked={business?.active ?? false}
-            className="h-4 w-4"
-          />
-          Visible en la web (pago al día)
-        </label>
+      </div>
+
+      <div className="grid gap-5 sm:grid-cols-3">
         <label className="flex items-center gap-2 self-end pb-2 text-sm font-medium">
           <input
             type="checkbox"

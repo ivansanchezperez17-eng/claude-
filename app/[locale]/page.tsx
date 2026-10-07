@@ -29,7 +29,7 @@ export default async function HomePage({
     .from("businesses")
     .select("*")
     .eq("category", "experiencia")
-    .eq("active", true)
+    .eq("status", "aprobado")
     .order("created_at", { ascending: false })
     .limit(3);
 
