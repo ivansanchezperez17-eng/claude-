@@ -1,0 +1,39 @@
+{
+  "nav": {
+    "home": "Inicio",
+    "directory": "Directorio",
+    "hotels": "Hoteles",
+    "restaurants": "Restaurantes",
+    "shops": "Comercios"
+  },
+  "home": {
+    "title": "Barichara, el pueblo más lindo de Colombia",
+    "subtitle": "Descubre dónde alojarte, comer y explorar en Barichara, Santander.",
+    "searchPlaceholder": "Busca un hotel, restaurante o comercio",
+    "exploreCta": "Explorar el directorio",
+    "categories": {
+      "hotel": "Hoteles",
+      "restaurante": "Restaurantes",
+      "comercio": "Comercios"
+    }
+  },
+  "directory": {
+    "title": "Directorio de Barichara",
+    "filterCategory": "Categoría",
+    "filterZone": "Zona",
+    "all": "Todos",
+    "empty": "Aún no hay negocios en esta categoría."
+  },
+  "business": {
+    "contact": "Contacto",
+    "whatsapp": "Escribir por WhatsApp",
+    "priceRange": "Rango de precio",
+    "zone": "Zona"
+  },
+  "chat": {
+    "title": "Guía de Barichara",
+    "placeholder": "Pregúntame sobre Barichara...",
+    "send": "Enviar",
+    "greeting": "¡Hola! Soy tu guía de Barichara. Pregúntame qué hacer, dónde comer o dónde alojarte."
+  }
+}

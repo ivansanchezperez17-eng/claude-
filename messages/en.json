@@ -1,0 +1,39 @@
+{
+  "nav": {
+    "home": "Home",
+    "directory": "Directory",
+    "hotels": "Hotels",
+    "restaurants": "Restaurants",
+    "shops": "Shops"
+  },
+  "home": {
+    "title": "Barichara, the most beautiful town in Colombia",
+    "subtitle": "Discover where to stay, eat and explore in Barichara, Santander.",
+    "searchPlaceholder": "Search a hotel, restaurant or shop",
+    "exploreCta": "Explore the directory",
+    "categories": {
+      "hotel": "Hotels",
+      "restaurante": "Restaurants",
+      "comercio": "Shops"
+    }
+  },
+  "directory": {
+    "title": "Barichara Directory",
+    "filterCategory": "Category",
+    "filterZone": "Zone",
+    "all": "All",
+    "empty": "No businesses in this category yet."
+  },
+  "business": {
+    "contact": "Contact",
+    "whatsapp": "Message on WhatsApp",
+    "priceRange": "Price range",
+    "zone": "Zone"
+  },
+  "chat": {
+    "title": "Barichara Guide",
+    "placeholder": "Ask me about Barichara...",
+    "send": "Send",
+    "greeting": "Hi! I'm your Barichara guide. Ask me what to do, where to eat or where to stay."
+  }
+}
