@@ -48,7 +48,12 @@
     "duration": "Duration",
     "zone": "Zone",
     "map": "View on Google Maps",
-    "sampleNotice": "Sample business shown to preview the directory."
+    "sampleNotice": "Sample business shown to preview the directory.",
+    "photoComingSoon": "Photo coming soon",
+    "mapTitle": "Location",
+    "mapFrameTitle": "Map of {name}",
+    "directions": "Get directions",
+    "related": "You may also like"
   },
   "chat": {
     "title": "Barichara Guide",
@@ -63,20 +68,24 @@
     "plans": {
       "basico": {
         "name": "Basic",
-        "description": "Your business in the directory: name, category, description, photos and WhatsApp button.",
-        "price": "Contact us for pricing"
+        "description": "Your business in the directory: name, category, description, photos and WhatsApp button."
       },
       "destacado": {
         "name": "Featured",
-        "description": "Basic + a preferred spot in your category and on the homepage.",
-        "price": "Contact us for pricing"
+        "description": "Basic + a preferred spot in your category and on the homepage."
       },
-      "destacadoBilingue": {
+      "destacado_bilingue": {
         "name": "Featured bilingual",
-        "description": "Featured + a professional English translation of your listing.",
-        "price": "Contact us for pricing"
+        "description": "Featured + a professional English translation of your listing."
       }
-    }
+    },
+    "whatsappMessage": "Hi, I'd like to list my business on Visit Barichara",
+    "priceToAgree": "To be agreed",
+    "pricePerMonth": "{price} / month",
+    "formTitle": "Sign up your business",
+    "formSubtitle": "Fill in the form and we'll contact you to publish your listing. Nothing is published without your authorization.",
+    "sentTitle": "We got your request!",
+    "sentBody": "We'll review it and reach you on WhatsApp in the next few days. Your listing isn't published until we approve it together."
   },
   "footer": {
     "disclaimer": "Private project. Not the official website of the Barichara municipality.",
@@ -114,6 +123,48 @@
       "entrada": "per entry",
       "pieza": "per piece",
       "trayecto": "per trip"
+    }
+  },
+  "application": {
+    "businessName": "Business name",
+    "contactName": "Contact person",
+    "phone": "Phone or WhatsApp",
+    "email": "Email (optional)",
+    "category": "Category",
+    "categoryPlaceholder": "Choose a category",
+    "categories": {
+      "experiencia": "Experience or tour",
+      "taller": "Craft workshop",
+      "transporte": "Transport",
+      "evento": "Event",
+      "hotel": "Hotel or lodging",
+      "restaurante": "Restaurant or café",
+      "comercio": "Shop"
+    },
+    "description": "Describe your business",
+    "photos": "Photos (up to 8)",
+    "photosHint": "JPG, PNG or WEBP. We resize them automatically and remove location data.",
+    "processing": "Preparing photos…",
+    "photosReady": "{count, plural, one {# photo ready} other {# photos ready}}",
+    "authorize": "I authorize Visit Barichara to publish these photos and information.",
+    "privacy": "I accept the <link>data processing policy</link> (Colombian Law 1581 of 2012).",
+    "submit": "Send request",
+    "sending": "Sending…",
+    "errors": {
+      "business_name": "Enter the business name (2 to 120 characters).",
+      "contact_name": "Enter the contact person's name.",
+      "phone": "Enter a valid phone number (digits only, 7 to 20).",
+      "email": "The email isn't valid.",
+      "category": "Choose a category.",
+      "description": "Describe the business (at least 10 characters).",
+      "authorized": "You must authorize publication to continue.",
+      "privacy_accepted": "You must accept the data policy to continue.",
+      "server": "We couldn't send your request. Please try again or message us on WhatsApp.",
+      "photos": {
+        "tooMany": "Up to 8 photos.",
+        "tooBig": "Each photo can be at most 5 MB.",
+        "badType": "Only JPG, PNG or WEBP photos are accepted."
+      }
     }
   }
 }

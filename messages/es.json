@@ -48,7 +48,12 @@
     "duration": "Duración",
     "zone": "Zona",
     "map": "Ver en Google Maps",
-    "sampleNotice": "Negocio de ejemplo para mostrar el directorio."
+    "sampleNotice": "Negocio de ejemplo para mostrar el directorio.",
+    "photoComingSoon": "Foto próximamente",
+    "mapTitle": "Ubicación",
+    "mapFrameTitle": "Mapa de {name}",
+    "directions": "Cómo llegar",
+    "related": "También te puede interesar"
   },
   "chat": {
     "title": "Guía de Barichara",
@@ -63,20 +68,24 @@
     "plans": {
       "basico": {
         "name": "Básico",
-        "description": "Tu negocio en el directorio: nombre, categoría, descripción, fotos y botón de WhatsApp.",
-        "price": "Contáctanos para precio"
+        "description": "Tu negocio en el directorio: nombre, categoría, descripción, fotos y botón de WhatsApp."
       },
       "destacado": {
         "name": "Destacado",
-        "description": "Básico + posición preferente en tu categoría y en el inicio.",
-        "price": "Contáctanos para precio"
+        "description": "Básico + posición preferente en tu categoría y en el inicio."
       },
-      "destacadoBilingue": {
+      "destacado_bilingue": {
         "name": "Destacado bilingüe",
-        "description": "Destacado + traducción profesional de tu descripción al inglés.",
-        "price": "Contáctanos para precio"
+        "description": "Destacado + traducción profesional de tu descripción al inglés."
       }
-    }
+    },
+    "whatsappMessage": "Hola, quiero aparecer con mi negocio en Visit Barichara",
+    "priceToAgree": "A convenir",
+    "pricePerMonth": "{price} / mes",
+    "formTitle": "Inscribe tu negocio",
+    "formSubtitle": "Llena el formulario y te contactamos para publicar tu ficha. Nada se publica sin tu autorización.",
+    "sentTitle": "¡Recibimos tu solicitud!",
+    "sentBody": "La revisamos y te escribimos por WhatsApp en los próximos días. Tu ficha no se publica hasta que la aprobemos juntos."
   },
   "footer": {
     "disclaimer": "Proyecto privado. No es la página oficial del municipio de Barichara.",
@@ -114,6 +123,48 @@
       "entrada": "por entrada",
       "pieza": "por pieza",
       "trayecto": "por trayecto"
+    }
+  },
+  "application": {
+    "businessName": "Nombre del negocio",
+    "contactName": "Nombre del responsable",
+    "phone": "Teléfono o WhatsApp",
+    "email": "Correo (opcional)",
+    "category": "Categoría",
+    "categoryPlaceholder": "Elige una categoría",
+    "categories": {
+      "experiencia": "Experiencia o tour",
+      "taller": "Taller artesanal",
+      "transporte": "Transporte",
+      "evento": "Evento",
+      "hotel": "Hotel u hospedaje",
+      "restaurante": "Restaurante o café",
+      "comercio": "Comercio o tienda"
+    },
+    "description": "Describe tu negocio",
+    "photos": "Fotos (hasta 8)",
+    "photosHint": "JPG, PNG o WEBP. Las reducimos automáticamente y les quitamos la ubicación.",
+    "processing": "Preparando fotos…",
+    "photosReady": "{count, plural, one {# foto lista} other {# fotos listas}}",
+    "authorize": "Autorizo a Visit Barichara a publicar estas fotos e información.",
+    "privacy": "Acepto la <link>política de tratamiento de datos</link> (Ley 1581 de 2012).",
+    "submit": "Enviar solicitud",
+    "sending": "Enviando…",
+    "errors": {
+      "business_name": "Escribe el nombre del negocio (2 a 120 caracteres).",
+      "contact_name": "Escribe el nombre del responsable.",
+      "phone": "Escribe un teléfono válido (solo números, de 7 a 20 dígitos).",
+      "email": "El correo no es válido.",
+      "category": "Elige una categoría.",
+      "description": "Describe el negocio (mínimo 10 caracteres).",
+      "authorized": "Debes autorizar la publicación para continuar.",
+      "privacy_accepted": "Debes aceptar la política de datos para continuar.",
+      "server": "No pudimos enviar la solicitud. Inténtalo de nuevo o escríbenos por WhatsApp.",
+      "photos": {
+        "tooMany": "Máximo 8 fotos.",
+        "tooBig": "Cada foto puede pesar máximo 5 MB.",
+        "badType": "Solo se aceptan fotos JPG, PNG o WEBP."
+      }
     }
   }
 }

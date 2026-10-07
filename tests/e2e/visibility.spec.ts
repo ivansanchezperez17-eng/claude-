@@ -47,7 +47,7 @@ test.describe("ficha de negocio", () => {
       const response = await page.goto(`/${locale}/negocio/hotel-aprobado`);
       expect(response?.status()).toBe(200);
       await expect(page).toHaveURL(new RegExp(`/${locale}/negocio/hotel-aprobado$`));
-      await expect(page.getByRole("heading", { name: "Hotel Aprobado" })).toBeVisible();
+      await expect(page.getByRole("heading", { name: "Hotel Aprobado", level: 1 })).toBeVisible();
     });
   }
 
@@ -55,7 +55,7 @@ test.describe("ficha de negocio", () => {
     await page.goto("/es/directorio");
     await page.getByRole("heading", { name: "Hotel Aprobado" }).click();
     await expect(page).toHaveURL(/\/es\/negocio\/hotel-aprobado$/);
-    await expect(page.getByRole("heading", { name: "Hotel Aprobado" })).toBeVisible();
+    await expect(page.getByRole("heading", { name: "Hotel Aprobado", level: 1 })).toBeVisible();
   });
 });
 

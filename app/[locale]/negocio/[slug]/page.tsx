@@ -5,6 +5,29 @@ import BusinessDetail from "@/components/BusinessDetail";
 import { getUsdCopRate } from "@/lib/settings";
 import type { Business, BusinessPhoto } from "@/lib/types";
 
+async function relatedBusinesses(
+  supabase: Awaited<ReturnType<typeof createClient>>,
+  business: Business,
+) {
+  const { data: sameCategory } = await supabase
+    .from("businesses")
+    .select("*")
+    .eq("status", "aprobado")
+    .eq("category", business.category)
+    .neq("id", business.id)
+    .limit(3);
+  const related = (sameCategory ?? []) as Business[];
+  if (related.length >= 3) return related;
+
+  const { data: others } = await supabase
+    .from("businesses")
+    .select("*")
+    .eq("status", "aprobado")
+    .neq("category", business.category)
+    .limit(3 - related.length);
+  return [...related, ...((others ?? []) as Business[])];
+}
+
 export default async function BusinessPage({
   params,
 }: {
@@ -14,29 +37,33 @@ export default async function BusinessPage({
   setRequestLocale(locale);
 
   const supabase = await createClient();
-  const { data: business } = await supabase
+  const { data } = await supabase
     .from("businesses")
     .select("*")
     .eq("slug", slug)
     .eq("status", "aprobado")
     .maybeSingle();
 
-  if (!business) {
+  if (!data) {
     notFound();
   }
+  const business = data as Business;
 
-  const { data: photos } = await supabase
-    .from("business_photos")
-    .select("*")
-    .eq("business_id", business.id)
-    .order("position");
-
-  const usdRate = await getUsdCopRate(supabase);
+  const [{ data: photos }, related, usdRate] = await Promise.all([
+    supabase
+      .from("business_photos")
+      .select("*")
+      .eq("business_id", business.id)
+      .order("position"),
+    relatedBusinesses(supabase, business),
+    getUsdCopRate(supabase),
+  ]);
 
   return (
     <BusinessDetail
-      business={business as Business}
+      business={business}
       photos={(photos ?? []) as BusinessPhoto[]}
+      related={related}
       locale={locale}
       usdRate={usdRate}
     />

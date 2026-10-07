@@ -27,3 +27,10 @@ body {
   color: var(--foreground);
   font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
 }
+
+/* En celular, la burbuja del chat sube para no tapar la barra de WhatsApp. */
+@media (max-width: 639px) {
+  body:has([data-sticky-cta]) [data-chat-launcher] {
+    bottom: 6.5rem;
+  }
+}

@@ -86,17 +86,31 @@ export const businesses = [
 ];
 
 export const clicks = [];
+export const applications = [];
 
 const tables = {
   businesses,
   business_photos: [],
   business_clicks: clicks,
-  site_settings: [{ key: "usd_cop_rate", value: 3210 }],
+  business_applications: applications,
+  site_settings: [
+    { key: "usd_cop_rate", value: 3210 },
+    { key: "contact_whatsapp", value: "573004678975" },
+    {
+      key: "plans",
+      value: {
+        basico: { price_cop: 100000 },
+        destacado: { price_cop: null },
+        destacado_bilingue: { price_cop: null },
+      },
+    },
+  ],
 };
+const uploads = [];
 
 function publicRows(table) {
   if (table === "businesses") return businesses.filter((b) => b.status === "aprobado");
-  if (table === "business_clicks") return [];
+  if (table === "business_clicks" || table === "business_applications") return [];
   return tables[table] ?? [];
 }
 
@@ -139,6 +153,19 @@ const server = http.createServer(async (req, res) => {
   const path = url.pathname;
 
   if (path.startsWith("/auth/v1/")) return send(res, 401, { message: "no session" });
+
+  // Solo para las pruebas: qué llegó a la base y al almacenamiento.
+  if (path === "/__test/state") {
+    return send(res, 200, { clicks, applications, uploads });
+  }
+
+  const upload = path.match(/^\/storage\/v1\/object\/(applications)\/(.+)$/);
+  if (upload && req.method === "POST") {
+    const chunks = [];
+    for await (const c of req) chunks.push(c);
+    uploads.push({ bucket: upload[1], path: upload[2], bytes: Buffer.concat(chunks).length });
+    return send(res, 200, { Key: `${upload[1]}/${upload[2]}` });
+  }
 
   const rpc = path.match(/^\/rest\/v1\/rpc\/(\w+)$/);
   if (rpc && req.method === "POST") {

@@ -44,7 +44,14 @@ export default async function DemoBusinessPage({
           {t("previewNotice")}
         </p>
       </div>
-      <BusinessDetail business={business} photos={[]} locale={locale} usdRate={usdRate} preview />
+      <BusinessDetail
+        business={business}
+        photos={[]}
+        related={[]}
+        locale={locale}
+        usdRate={usdRate}
+        preview
+      />
     </>
   );
 }

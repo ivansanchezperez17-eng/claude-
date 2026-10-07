@@ -21,6 +21,7 @@ export default function BusinessCard({
   const t = useTranslations("home.categories");
   const tDirectory = useTranslations("directory");
   const tStatus = useTranslations("status");
+  const tBusiness = useTranslations("business");
   const description =
     locale === "en" ? business.description_en : business.description_es;
 
@@ -38,8 +39,12 @@ export default function BusinessCard({
             className="h-full w-full object-cover"
           />
         ) : (
-          <div className="flex h-full w-full items-center justify-center text-sm text-foreground/40">
-            {business.name}
+          <div className="flex h-full w-full flex-col items-center justify-center gap-2 bg-gradient-to-br from-stone to-sand/40 text-clay-dark/60">
+            <svg viewBox="0 0 24 24" aria-hidden="true" className="h-7 w-7" fill="none" stroke="currentColor" strokeWidth="1.5">
+              <path d="M3 7.5A2.5 2.5 0 0 1 5.5 5h1.6l1.2-1.8A1 1 0 0 1 9.1 3h5.8a1 1 0 0 1 .8.4L16.9 5h1.6A2.5 2.5 0 0 1 21 7.5v10a2.5 2.5 0 0 1-2.5 2.5h-13A2.5 2.5 0 0 1 3 17.5z" />
+              <circle cx="12" cy="12.5" r="3.5" />
+            </svg>
+            <span className="text-xs font-medium">{tBusiness("photoComingSoon")}</span>
           </div>
         )}
       </div>

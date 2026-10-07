@@ -53,7 +53,7 @@ export default function ChatWidget() {
   }
 
   return (
-    <div className="fixed bottom-5 right-5 z-50">
+    <div data-chat-launcher className="fixed bottom-5 right-5 z-50">
       {open && (
         <div className="mb-3 flex h-[28rem] w-80 flex-col overflow-hidden rounded-2xl border border-stone bg-white shadow-xl sm:w-96">
           <div className="bg-clay px-4 py-3 text-white">
