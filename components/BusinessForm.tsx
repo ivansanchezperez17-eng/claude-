@@ -123,11 +123,38 @@ export default function BusinessForm({
         </Field>
       </div>
 
-      <Field label="Link de Google Maps">
+      <div className="grid gap-5 sm:grid-cols-3">
+        <Field label="Link de Google Maps">
+          <input
+            name="map_url"
+            placeholder="https://maps.google.com/..."
+            defaultValue={business?.map_url ?? ""}
+            className="w-full rounded-lg border border-stone px-3 py-2 outline-none focus:border-clay"
+          />
+        </Field>
+        <Field label="Sitio web">
+          <input
+            name="website"
+            placeholder="https://..."
+            defaultValue={business?.website ?? ""}
+            className="w-full rounded-lg border border-stone px-3 py-2 outline-none focus:border-clay"
+          />
+        </Field>
+        <Field label="Instagram">
+          <input
+            name="instagram"
+            placeholder="@usuario"
+            defaultValue={business?.instagram ?? ""}
+            className="w-full rounded-lg border border-stone px-3 py-2 outline-none focus:border-clay"
+          />
+        </Field>
+      </div>
+
+      <Field label="Fuente de la investigación (uso interno)">
         <input
-          name="map_url"
-          placeholder="https://maps.google.com/..."
-          defaultValue={business?.map_url ?? ""}
+          name="source_url"
+          placeholder="https://..."
+          defaultValue={business?.source_url ?? ""}
           className="w-full rounded-lg border border-stone px-3 py-2 outline-none focus:border-clay"
         />
       </Field>

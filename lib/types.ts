@@ -22,6 +22,9 @@ export type Business = {
   schedule: string | null;
   duration: string | null;
   map_url: string | null;
+  website: string | null;
+  instagram: string | null;
+  source_url: string | null;
   is_sample: boolean;
   active: boolean;
   next_payment_due: string | null;
