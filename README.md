@@ -23,7 +23,7 @@ Stack: Next.js 16 (App Router + Turbopack), next-intl, Supabase (Postgres + Auth
    - `NEXT_PUBLIC_SITE_URL`: dominio público del sitio, para el SEO (hreflang, sitemap.xml).
    - `NEXT_PUBLIC_SOLUTIONS_WHATSAPP`: WhatsApp de contacto en la página "¿Tienes un negocio?" (opcional; sin ella el botón queda deshabilitado con un aviso).
 
-   Si el proyecto de Supabase ya tenía el esquema inicial aplicado, corre también `supabase/migration_02_categories_and_clicks.sql` y `supabase/migration_03_website_instagram_source.sql` para quedar al día. Opcionalmente `supabase/seed_sample_businesses.sql` para ver el directorio lleno con negocios de ejemplo (`is_sample = true`), o `supabase/seed_verified_businesses.sql` para cargar los negocios reales investigados (quedan con `active = false`, revisar y activar desde `/admin`).
+   Si el proyecto de Supabase ya tenía el esquema inicial aplicado, corre también `supabase/migration_02_categories_and_clicks.sql` y `supabase/migration_03_website_instagram_source.sql` para quedar al día. Opcionalmente `supabase/seed_sample_businesses.sql` para ver el directorio lleno con negocios de ejemplo (`is_sample = true`), o `supabase/seed_verified_businesses.sql` para cargar los negocios reales investigados (quedan activos; el que no pague se desactiva desde `/admin`).
 
 5. Levantar el servidor de desarrollo:
 
