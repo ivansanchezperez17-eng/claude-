@@ -19,11 +19,11 @@ export default async function DirectoryPage({
   searchParams,
 }: {
   params: Promise<{ locale: string }>;
-  searchParams: Promise<{ category?: string; zone?: string; q?: string }>;
+  searchParams: Promise<{ category?: string; q?: string }>;
 }) {
   const { locale } = await params;
   setRequestLocale(locale);
-  const { category, zone, q } = await searchParams;
+  const { category, q } = await searchParams;
 
   const t = await getTranslations("directory");
   const tCategories = await getTranslations("home.categories");
@@ -38,9 +38,6 @@ export default async function DirectoryPage({
 
   if (category && categories.includes(category as Category)) {
     query = query.eq("category", category);
-  }
-  if (zone) {
-    query = query.eq("zone", zone);
   }
   if (q) {
     query = query.ilike("name", `%${q}%`);
@@ -62,47 +59,20 @@ export default async function DirectoryPage({
     }
   }
 
-  const { data: zonesData } = await supabase
-    .from("businesses")
-    .select("zone")
-    .eq("active", true)
-    .not("zone", "is", null);
-  const zones = Array.from(
-    new Set((zonesData ?? []).map((z) => z.zone as string)),
-  ).sort();
-
   return (
     <div className="mx-auto max-w-6xl px-6 py-12">
       <h1 className="font-serif text-3xl text-clay-dark">{t("title")}</h1>
 
       <div className="mt-6 flex flex-wrap items-center gap-3">
-        <FilterLink
-          active={!category}
-          href={{ zone, q }}
-          label={t("all")}
-        />
+        <FilterLink active={!category} href={{ q }} label={t("all")} />
         {categories.map((c) => (
           <FilterLink
             key={c}
             active={category === c}
-            href={{ category: c, zone, q }}
+            href={{ category: c, q }}
             label={tCategories(c)}
           />
         ))}
-
-        {zones.length > 0 && (
-          <div className="ml-auto flex flex-wrap gap-2">
-            {zones.map((z) => (
-              <FilterLink
-                key={z}
-                active={zone === z}
-                href={{ category, zone: zone === z ? undefined : z, q }}
-                label={z}
-                subtle
-              />
-            ))}
-          </div>
-        )}
       </div>
 
       {list.length === 0 ? (
@@ -126,16 +96,13 @@ function FilterLink({
   active,
   href,
   label,
-  subtle,
 }: {
   active: boolean;
-  href: { category?: string; zone?: string; q?: string };
+  href: { category?: string; q?: string };
   label: string;
-  subtle?: boolean;
 }) {
   const params = new URLSearchParams();
   if (href.category) params.set("category", href.category);
-  if (href.zone) params.set("zone", href.zone);
   if (href.q) params.set("q", href.q);
   const search = params.toString();
 
@@ -145,9 +112,7 @@ function FilterLink({
       className={`rounded-full px-4 py-1.5 text-sm font-medium transition-colors ${
         active
           ? "bg-clay text-white"
-          : subtle
-            ? "bg-white text-foreground/60 ring-1 ring-stone hover:text-foreground"
-            : "bg-stone text-foreground/70 hover:bg-stone/70"
+          : "bg-stone text-foreground/70 hover:bg-stone/70"
       }`}
     >
       {label}

@@ -57,11 +57,6 @@ export default function BusinessCard({
             {description}
           </p>
         )}
-        {business.zone && (
-          <span className="mt-auto pt-2 text-xs text-foreground/50">
-            {business.zone}
-          </span>
-        )}
       </div>
     </Link>
   );
