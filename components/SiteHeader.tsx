@@ -1,9 +1,13 @@
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
+import NextLink from "next/link";
 import { Link } from "@/i18n/navigation";
 import LocaleSwitcher from "./LocaleSwitcher";
 
 export default function SiteHeader() {
   const t = useTranslations("nav");
+  const locale = useLocale();
+  const forBusinessesHref =
+    locale === "en" ? "/en/business" : "/es/negocios";
 
   return (
     <header className="sticky top-0 z-40 border-b border-stone/80 bg-background/90 backdrop-blur">
@@ -18,6 +22,9 @@ export default function SiteHeader() {
           <Link href="/directorio" className="hover:text-clay-dark">
             {t("directory")}
           </Link>
+          <NextLink href={forBusinessesHref} className="hover:text-clay-dark">
+            {t("forBusinesses")}
+          </NextLink>
         </nav>
         <LocaleSwitcher />
       </div>

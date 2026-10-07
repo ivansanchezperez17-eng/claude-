@@ -69,6 +69,12 @@ export default async function BusinessPage({
         <p className="mt-4 text-foreground/80">{description}</p>
       )}
 
+      {typedBusiness.is_sample && (
+        <p className="mt-4 rounded-xl bg-stone/60 px-4 py-2 text-sm text-foreground/60">
+          {t("sampleNotice")}
+        </p>
+      )}
+
       <dl className="mt-8 grid gap-4 rounded-2xl border border-stone bg-white p-6 sm:grid-cols-2">
         {typedBusiness.zone && (
           <div>
@@ -78,12 +84,36 @@ export default async function BusinessPage({
             <dd className="mt-1">{typedBusiness.zone}</dd>
           </div>
         )}
+        {typedBusiness.price_from && (
+          <div>
+            <dt className="text-xs uppercase tracking-wide text-foreground/50">
+              {t("priceFrom")}
+            </dt>
+            <dd className="mt-1">{typedBusiness.price_from}</dd>
+          </div>
+        )}
         {typedBusiness.price_range && (
           <div>
             <dt className="text-xs uppercase tracking-wide text-foreground/50">
               {t("priceRange")}
             </dt>
             <dd className="mt-1">{typedBusiness.price_range}</dd>
+          </div>
+        )}
+        {typedBusiness.schedule && (
+          <div>
+            <dt className="text-xs uppercase tracking-wide text-foreground/50">
+              {t("schedule")}
+            </dt>
+            <dd className="mt-1">{typedBusiness.schedule}</dd>
+          </div>
+        )}
+        {typedBusiness.duration && (
+          <div>
+            <dt className="text-xs uppercase tracking-wide text-foreground/50">
+              {t("duration")}
+            </dt>
+            <dd className="mt-1">{typedBusiness.duration}</dd>
           </div>
         )}
         {typedBusiness.phone && (
@@ -96,16 +126,26 @@ export default async function BusinessPage({
         )}
       </dl>
 
-      {typedBusiness.whatsapp && (
-        <a
-          href={`https://wa.me/${typedBusiness.whatsapp.replace(/\D/g, "")}`}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="mt-6 inline-block rounded-full bg-sage px-6 py-3 font-medium text-white transition-colors hover:bg-sage/90"
-        >
-          {t("whatsapp")}
-        </a>
-      )}
+      <div className="mt-6 flex flex-wrap gap-3">
+        {typedBusiness.whatsapp && (
+          <a
+            href={`/go/${typedBusiness.slug}?lang=${currentLocale}`}
+            className="inline-block rounded-full bg-sage px-6 py-3 font-medium text-white transition-colors hover:bg-sage/90"
+          >
+            {t("whatsapp")}
+          </a>
+        )}
+        {typedBusiness.map_url && (
+          <a
+            href={typedBusiness.map_url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block rounded-full border border-stone px-6 py-3 font-medium text-clay-dark transition-colors hover:bg-stone/40"
+          >
+            {t("map")}
+          </a>
+        )}
+      </div>
     </div>
   );
 }

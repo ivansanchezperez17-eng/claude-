@@ -12,6 +12,7 @@ export default function BusinessCard({
 }) {
   const locale = useLocale();
   const t = useTranslations("home.categories");
+  const tDirectory = useTranslations("directory");
   const description =
     locale === "en" ? business.description_en : business.description_es;
 
@@ -35,10 +36,22 @@ export default function BusinessCard({
         )}
       </div>
       <div className="flex flex-1 flex-col gap-1 p-5">
-        <span className="text-xs font-medium uppercase tracking-wide text-sage">
-          {t(business.category)}
-        </span>
+        <div className="flex items-center justify-between gap-2">
+          <span className="text-xs font-medium uppercase tracking-wide text-sage">
+            {t(business.category)}
+          </span>
+          {business.is_sample && (
+            <span className="rounded-full bg-foreground/10 px-2 py-0.5 text-[10px] font-medium uppercase tracking-wide text-foreground/50">
+              {tDirectory("sampleBadge")}
+            </span>
+          )}
+        </div>
         <h3 className="font-serif text-lg text-clay-dark">{business.name}</h3>
+        {business.price_from && (
+          <span className="text-xs font-medium text-clay-dark">
+            {business.price_from}
+          </span>
+        )}
         {description && (
           <p className="line-clamp-2 text-sm text-foreground/70">
             {description}

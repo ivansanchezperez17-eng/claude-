@@ -31,9 +31,13 @@ export default function BusinessForm({
         <Field label="Categoría">
           <select
             name="category"
-            defaultValue={business?.category ?? "hotel"}
+            defaultValue={business?.category ?? "experiencia"}
             className="w-full rounded-lg border border-stone px-3 py-2 outline-none focus:border-clay"
           >
+            <option value="experiencia">Experiencia / tour</option>
+            <option value="taller">Taller artesanal</option>
+            <option value="transporte">Transporte</option>
+            <option value="evento">Evento</option>
             <option value="hotel">Hotel</option>
             <option value="restaurante">Restaurante</option>
             <option value="comercio">Comercio</option>
@@ -92,7 +96,43 @@ export default function BusinessForm({
         </Field>
       </div>
 
-      <div className="grid gap-5 sm:grid-cols-2">
+      <div className="grid gap-5 sm:grid-cols-3">
+        <Field label="Precio desde">
+          <input
+            name="price_from"
+            placeholder="Desde $45.000"
+            defaultValue={business?.price_from ?? ""}
+            className="w-full rounded-lg border border-stone px-3 py-2 outline-none focus:border-clay"
+          />
+        </Field>
+        <Field label="Horario">
+          <input
+            name="schedule"
+            placeholder="8:00 am - 5:00 pm"
+            defaultValue={business?.schedule ?? ""}
+            className="w-full rounded-lg border border-stone px-3 py-2 outline-none focus:border-clay"
+          />
+        </Field>
+        <Field label="Duración">
+          <input
+            name="duration"
+            placeholder="2 horas"
+            defaultValue={business?.duration ?? ""}
+            className="w-full rounded-lg border border-stone px-3 py-2 outline-none focus:border-clay"
+          />
+        </Field>
+      </div>
+
+      <Field label="Link de Google Maps">
+        <input
+          name="map_url"
+          placeholder="https://maps.google.com/..."
+          defaultValue={business?.map_url ?? ""}
+          className="w-full rounded-lg border border-stone px-3 py-2 outline-none focus:border-clay"
+        />
+      </Field>
+
+      <div className="grid gap-5 sm:grid-cols-3">
         <Field label="Próximo pago">
           <input
             type="date"
@@ -109,6 +149,15 @@ export default function BusinessForm({
             className="h-4 w-4"
           />
           Visible en la web (pago al día)
+        </label>
+        <label className="flex items-center gap-2 self-end pb-2 text-sm font-medium">
+          <input
+            type="checkbox"
+            name="is_sample"
+            defaultChecked={business?.is_sample ?? false}
+            className="h-4 w-4"
+          />
+          Negocio de ejemplo
         </label>
       </div>
 

@@ -4,17 +4,24 @@
     "directory": "Directorio",
     "hotels": "Hoteles",
     "restaurants": "Restaurantes",
-    "shops": "Comercios"
+    "shops": "Comercios",
+    "forBusinesses": "¿Tienes un negocio? Aparece aquí"
   },
   "home": {
     "title": "Barichara, el pueblo más lindo de Colombia",
     "subtitle": "Caminos de piedra, cañones, cascadas y artesanía: todo lo que puedes hacer en Barichara, Santander.",
     "exploreCta": "Ver qué hacer",
+    "featuredExperiencesTitle": "Experiencias destacadas",
+    "featuredExperiencesSubtitle": "Planes y tours para vivir Barichara de cerca.",
     "stayTitle": "¿Ya decidiste quedarte?",
     "staySubtitle": "Encuentra dónde alojarte y dónde comer en Barichara.",
     "searchPlaceholder": "Busca un hotel, restaurante o comercio",
     "searchCta": "Buscar",
     "categories": {
+      "experiencia": "Experiencias y tours",
+      "taller": "Talleres artesanales",
+      "transporte": "Transporte",
+      "evento": "Eventos",
       "hotel": "Hoteles",
       "restaurante": "Restaurantes",
       "comercio": "Comercios"
@@ -29,18 +36,55 @@
     "filterCategory": "Categoría",
     "filterZone": "Zona",
     "all": "Todos",
-    "empty": "Aún no hay negocios en esta categoría."
+    "empty": "Aún no hay negocios en esta categoría.",
+    "sampleBadge": "Ejemplo"
   },
   "business": {
     "contact": "Contacto",
     "whatsapp": "Escribir por WhatsApp",
     "priceRange": "Rango de precio",
-    "zone": "Zona"
+    "priceFrom": "Precio desde",
+    "schedule": "Horario",
+    "duration": "Duración",
+    "zone": "Zona",
+    "map": "Ver en Google Maps",
+    "sampleNotice": "Negocio de ejemplo para mostrar el directorio."
   },
   "chat": {
     "title": "Guía de Barichara",
     "placeholder": "Pregúntame sobre Barichara...",
     "send": "Enviar",
     "greeting": "¡Hola! Soy tu guía de Barichara. Pregúntame qué hacer, dónde comer o dónde alojarte."
+  },
+  "forBusinesses": {
+    "title": "Lleva tu negocio a los visitantes de Barichara",
+    "subtitle": "Apareces en el directorio bilingüe que usan los turistas para decidir qué hacer, dónde comer y dónde alojarse.",
+    "ctaWhatsapp": "Escríbenos por WhatsApp",
+    "plans": {
+      "basico": {
+        "name": "Básico",
+        "description": "Tu negocio en el directorio: nombre, categoría, descripción, fotos y botón de WhatsApp.",
+        "price": "Contáctanos para precio"
+      },
+      "destacado": {
+        "name": "Destacado",
+        "description": "Básico + posición preferente en tu categoría y en el inicio.",
+        "price": "Contáctanos para precio"
+      },
+      "destacadoBilingue": {
+        "name": "Destacado bilingüe",
+        "description": "Destacado + traducción profesional de tu descripción al inglés.",
+        "price": "Contáctanos para precio"
+      }
+    }
+  },
+  "footer": {
+    "disclaimer": "Proyecto privado. No es la página oficial del municipio de Barichara.",
+    "privacyPolicy": "Política de privacidad",
+    "contact": "Contacto"
+  },
+  "privacy": {
+    "title": "Política de privacidad",
+    "updated": "Última actualización: octubre de 2026"
   }
 }

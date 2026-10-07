@@ -4,17 +4,24 @@
     "directory": "Directory",
     "hotels": "Hotels",
     "restaurants": "Restaurants",
-    "shops": "Shops"
+    "shops": "Shops",
+    "forBusinesses": "Have a business? List it here"
   },
   "home": {
     "title": "Barichara, the most beautiful town in Colombia",
     "subtitle": "Stone trails, canyons, waterfalls and craftsmanship: everything there is to do in Barichara, Santander.",
     "exploreCta": "See what to do",
+    "featuredExperiencesTitle": "Featured experiences",
+    "featuredExperiencesSubtitle": "Plans and tours to experience Barichara up close.",
     "stayTitle": "Already decided to stay?",
     "staySubtitle": "Find where to stay and where to eat in Barichara.",
     "searchPlaceholder": "Search a hotel, restaurant or shop",
     "searchCta": "Search",
     "categories": {
+      "experiencia": "Experiences & tours",
+      "taller": "Craft workshops",
+      "transporte": "Transport",
+      "evento": "Events",
       "hotel": "Hotels",
       "restaurante": "Restaurants",
       "comercio": "Shops"
@@ -29,18 +36,55 @@
     "filterCategory": "Category",
     "filterZone": "Zone",
     "all": "All",
-    "empty": "No businesses in this category yet."
+    "empty": "No businesses in this category yet.",
+    "sampleBadge": "Sample"
   },
   "business": {
     "contact": "Contact",
     "whatsapp": "Message on WhatsApp",
     "priceRange": "Price range",
-    "zone": "Zone"
+    "priceFrom": "Price from",
+    "schedule": "Schedule",
+    "duration": "Duration",
+    "zone": "Zone",
+    "map": "View on Google Maps",
+    "sampleNotice": "Sample business shown to preview the directory."
   },
   "chat": {
     "title": "Barichara Guide",
     "placeholder": "Ask me about Barichara...",
     "send": "Send",
     "greeting": "Hi! I'm your Barichara guide. Ask me what to do, where to eat or where to stay."
+  },
+  "forBusinesses": {
+    "title": "Bring your business to Barichara's visitors",
+    "subtitle": "Get listed on the bilingual directory tourists use to decide what to do, where to eat and where to stay.",
+    "ctaWhatsapp": "Message us on WhatsApp",
+    "plans": {
+      "basico": {
+        "name": "Basic",
+        "description": "Your business in the directory: name, category, description, photos and WhatsApp button.",
+        "price": "Contact us for pricing"
+      },
+      "destacado": {
+        "name": "Featured",
+        "description": "Basic + a preferred spot in your category and on the homepage.",
+        "price": "Contact us for pricing"
+      },
+      "destacadoBilingue": {
+        "name": "Featured bilingual",
+        "description": "Featured + a professional English translation of your listing.",
+        "price": "Contact us for pricing"
+      }
+    }
+  },
+  "footer": {
+    "disclaimer": "Private project. Not the official website of the Barichara municipality.",
+    "privacyPolicy": "Privacy policy",
+    "contact": "Contact"
+  },
+  "privacy": {
+    "title": "Privacy policy",
+    "updated": "Last updated: October 2026"
   }
 }

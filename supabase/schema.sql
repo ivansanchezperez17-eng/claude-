@@ -8,13 +8,20 @@ create table if not exists public.businesses (
   id uuid primary key default gen_random_uuid(),
   slug text not null unique,
   name text not null,
-  category text not null check (category in ('hotel', 'restaurante', 'comercio')),
+  category text not null check (
+    category in ('experiencia', 'taller', 'transporte', 'evento', 'hotel', 'restaurante', 'comercio')
+  ),
   zone text,
   description_es text,
   description_en text,
   phone text,
   whatsapp text,
   price_range text,
+  price_from text,
+  schedule text,
+  duration text,
+  map_url text,
+  is_sample boolean not null default false,
   active boolean not null default false,
   next_payment_due date,
   created_at timestamptz not null default now()
@@ -33,9 +40,20 @@ create table if not exists public.business_photos (
 
 create index if not exists business_photos_business_id_idx on public.business_photos (business_id);
 
+-- Registro de clics al botón de WhatsApp de cada negocio (vía /go/[slug])
+create table if not exists public.business_clicks (
+  id uuid primary key default gen_random_uuid(),
+  business_id uuid not null references public.businesses (id) on delete cascade,
+  clicked_at timestamptz not null default now(),
+  locale text not null check (locale in ('es', 'en'))
+);
+
+create index if not exists business_clicks_business_id_idx on public.business_clicks (business_id);
+
 -- Row Level Security
 alter table public.businesses enable row level security;
 alter table public.business_photos enable row level security;
+alter table public.business_clicks enable row level security;
 
 -- Cualquier visitante (anon o autenticado) puede leer negocios activos
 drop policy if exists "public read active businesses" on public.businesses;
@@ -71,6 +89,20 @@ create policy "authenticated manage photos"
   to authenticated
   using (true)
   with check (true);
+
+-- Cualquiera puede registrar un clic (botón de WhatsApp público)
+drop policy if exists "insert business clicks" on public.business_clicks;
+create policy "insert business clicks"
+  on public.business_clicks for insert
+  to anon, authenticated
+  with check (true);
+
+-- Solo el admin autenticado puede leer los clics registrados
+drop policy if exists "authenticated read business clicks" on public.business_clicks;
+create policy "authenticated read business clicks"
+  on public.business_clicks for select
+  to authenticated
+  using (true);
 
 -- Bucket de Storage para las fotos de negocios (público para lectura)
 insert into storage.buckets (id, name, public)

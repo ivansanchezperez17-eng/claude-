@@ -47,6 +47,11 @@ function businessFields(formData: FormData) {
     phone: (formData.get("phone") as string) || null,
     whatsapp: (formData.get("whatsapp") as string) || null,
     price_range: (formData.get("price_range") as string) || null,
+    price_from: (formData.get("price_from") as string) || null,
+    schedule: (formData.get("schedule") as string) || null,
+    duration: (formData.get("duration") as string) || null,
+    map_url: (formData.get("map_url") as string) || null,
+    is_sample: formData.get("is_sample") === "on",
     active: formData.get("active") === "on",
     next_payment_due: (formData.get("next_payment_due") as string) || null,
   };

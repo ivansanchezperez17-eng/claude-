@@ -4,7 +4,15 @@ import { createClient } from "@/lib/supabase/server";
 import BusinessCard from "@/components/BusinessCard";
 import type { Business, BusinessPhoto, Category } from "@/lib/types";
 
-const categories: Category[] = ["hotel", "restaurante", "comercio"];
+const categories: Category[] = [
+  "experiencia",
+  "taller",
+  "transporte",
+  "evento",
+  "hotel",
+  "restaurante",
+  "comercio",
+];
 
 export default async function DirectoryPage({
   params,

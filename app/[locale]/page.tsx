@@ -2,8 +2,19 @@ import { useTranslations } from "next-intl";
 import { setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { attractions } from "@/lib/attractions";
+import { createClient } from "@/lib/supabase/server";
+import type { Business, Category } from "@/lib/types";
+import BusinessCard from "@/components/BusinessCard";
 
-const categories = ["hotel", "restaurante", "comercio"] as const;
+const categories: Category[] = [
+  "experiencia",
+  "taller",
+  "transporte",
+  "evento",
+  "hotel",
+  "restaurante",
+  "comercio",
+];
 
 export default async function HomePage({
   params,
@@ -13,16 +24,31 @@ export default async function HomePage({
   const { locale } = await params;
   setRequestLocale(locale);
 
-  return <Home locale={locale} />;
+  const supabase = await createClient();
+  const { data: featured } = await supabase
+    .from("businesses")
+    .select("*")
+    .eq("category", "experiencia")
+    .eq("active", true)
+    .order("created_at", { ascending: false })
+    .limit(3);
+
+  return <Home locale={locale} featured={(featured ?? []) as Business[]} />;
 }
 
-function Home({ locale }: { locale: string }) {
+function Home({ locale, featured }: { locale: string; featured: Business[] }) {
   const t = useTranslations("home");
   const tAttractions = useTranslations("attractions");
 
   return (
     <div>
-      <section className="bg-gradient-to-b from-clay-dark to-clay px-6 py-24 text-center text-white sm:py-32">
+      <section
+        className="bg-gradient-to-b from-clay-dark to-clay bg-cover bg-center px-6 py-24 text-center text-white sm:py-32"
+        style={{
+          backgroundImage:
+            "linear-gradient(to bottom, rgba(0,0,0,0.35), rgba(0,0,0,0.45)), url('/hero-barichara.jpg')",
+        }}
+      >
         <h1 className="mx-auto max-w-2xl font-serif text-4xl leading-tight sm:text-5xl">
           {t("title")}
         </h1>
@@ -36,6 +62,22 @@ function Home({ locale }: { locale: string }) {
           {t("exploreCta")}
         </a>
       </section>
+
+      {featured.length > 0 && (
+        <section className="mx-auto max-w-6xl px-6 py-16">
+          <h2 className="text-center font-serif text-3xl text-clay-dark">
+            {t("featuredExperiencesTitle")}
+          </h2>
+          <p className="mx-auto mt-3 max-w-2xl text-center text-foreground/70">
+            {t("featuredExperiencesSubtitle")}
+          </p>
+          <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {featured.map((business) => (
+              <BusinessCard key={business.id} business={business} />
+            ))}
+          </div>
+        </section>
+      )}
 
       <section id="que-hacer" className="mx-auto max-w-6xl px-6 py-16">
         <h2 className="text-center font-serif text-3xl text-clay-dark">
@@ -97,14 +139,14 @@ function Home({ locale }: { locale: string }) {
             </button>
           </form>
 
-          <div className="mt-8 grid gap-6 sm:grid-cols-3">
+          <div className="mt-8 grid gap-6 sm:grid-cols-3 lg:grid-cols-4">
             {categories.map((category) => (
               <Link
                 key={category}
                 href={`/directorio?category=${category}`}
                 className="group rounded-2xl border border-stone bg-white p-8 text-center shadow-sm transition-all hover:-translate-y-1 hover:shadow-md"
               >
-                <span className="font-serif text-2xl text-clay-dark">
+                <span className="font-serif text-xl text-clay-dark">
                   {t(`categories.${category}`)}
                 </span>
               </Link>

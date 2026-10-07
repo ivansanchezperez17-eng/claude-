@@ -1,4 +1,11 @@
-export type Category = "hotel" | "restaurante" | "comercio";
+export type Category =
+  | "experiencia"
+  | "taller"
+  | "transporte"
+  | "evento"
+  | "hotel"
+  | "restaurante"
+  | "comercio";
 
 export type Business = {
   id: string;
@@ -11,6 +18,11 @@ export type Business = {
   phone: string | null;
   whatsapp: string | null;
   price_range: string | null;
+  price_from: string | null;
+  schedule: string | null;
+  duration: string | null;
+  map_url: string | null;
+  is_sample: boolean;
   active: boolean;
   next_payment_due: string | null;
   created_at: string;
