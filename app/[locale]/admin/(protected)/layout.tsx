@@ -27,6 +27,7 @@ export default async function AdminLayout({
             Panel de Visit Barichara
           </h1>
           <form action={signOut}>
+            <input type="hidden" name="locale" value={locale} />
             <button
               type="submit"
               className="text-sm text-foreground/60 hover:text-foreground"

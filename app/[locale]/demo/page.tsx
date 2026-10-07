@@ -1,6 +1,7 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { createClient } from "@/lib/supabase/server";
 import { getDemoPassword } from "@/lib/demo";
+import { getUsdCopRate } from "@/lib/settings";
 import BusinessCard from "@/components/BusinessCard";
 import type { Business } from "@/lib/types";
 import { enterDemo, exitDemo } from "./actions";
@@ -19,13 +20,17 @@ export default async function DemoPage({
 
   const password = await getDemoPassword();
   let businesses: Business[] | null = null;
+  let usdRate = 0;
 
   if (password) {
     const supabase = await createClient();
     const { data, error: rpcError } = await supabase.rpc("demo_businesses", {
       p_password: password,
     });
-    if (!rpcError) businesses = (data ?? []) as Business[];
+    if (!rpcError) {
+      businesses = (data ?? []) as Business[];
+      usdRate = await getUsdCopRate(supabase);
+    }
   }
 
   if (!businesses) {
@@ -80,6 +85,7 @@ export default async function DemoPage({
           <BusinessCard
             key={business.id}
             business={business}
+            usdRate={usdRate}
             basePath="/demo"
             showStatus
           />

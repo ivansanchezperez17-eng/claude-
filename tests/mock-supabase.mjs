@@ -11,6 +11,10 @@ const base = {
   description_en: null,
   phone: null,
   price_range: null,
+  price_from: null,
+  price_from_cop: null,
+  price_unit: null,
+  price_type: "fijo",
   schedule: null,
   duration: null,
   map_url: null,
@@ -36,7 +40,8 @@ export const businesses = [
     description_es: "Tour ficticio de prueba.",
     description_en: "Fictional test tour.",
     whatsapp: "573000000001",
-    price_from: "Desde $80.000",
+    price_from_cop: 80000,
+    price_unit: "persona",
     duration: "2 horas",
     is_sample: true,
     status: "aprobado",
@@ -51,6 +56,8 @@ export const businesses = [
     description_en: "Approved test hotel.",
     whatsapp: "573000000002",
     zone: "Calle 1 # 2-3",
+    price_from_cop: 414000,
+    price_unit: "noche",
     map_url: "https://www.google.com/maps/search/?api=1&query=Barichara",
     is_sample: false,
     status: "aprobado",
@@ -80,7 +87,12 @@ export const businesses = [
 
 export const clicks = [];
 
-const tables = { businesses, business_photos: [], business_clicks: clicks };
+const tables = {
+  businesses,
+  business_photos: [],
+  business_clicks: clicks,
+  site_settings: [{ key: "usd_cop_rate", value: 3210 }],
+};
 
 function publicRows(table) {
   if (table === "businesses") return businesses.filter((b) => b.status === "aprobado");

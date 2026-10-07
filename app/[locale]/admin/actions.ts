@@ -31,14 +31,24 @@ export async function signIn(formData: FormData) {
   redirect(`/${locale}/admin`);
 }
 
-export async function signOut() {
+export async function signOut(formData: FormData) {
+  const locale = formData.get("locale") === "en" ? "en" : "es";
   const supabase = await createClient();
   await supabase.auth.signOut();
-  redirect(`/admin/login`);
+  redirect(`/${locale}/admin/login`);
 }
 
 const STATUSES = ["borrador", "aprobado", "rechazado"] as const;
 const PLANS = ["basico", "destacado", "destacado_bilingue"] as const;
+
+const PRICE_UNITS = ["persona", "noche", "entrada", "pieza", "trayecto"] as const;
+const PRICE_TYPES = ["fijo", "voluntario", "gratis"] as const;
+
+function copAmount(value: FormDataEntryValue | null) {
+  if (value === null || value === "") return null;
+  const amount = Math.round(Number(value));
+  return Number.isFinite(amount) && amount >= 0 ? amount : null;
+}
 
 function oneOf<T extends string, F>(
   value: FormDataEntryValue | null,
@@ -58,7 +68,9 @@ function businessFields(formData: FormData) {
     phone: (formData.get("phone") as string) || null,
     whatsapp: (formData.get("whatsapp") as string) || null,
     price_range: (formData.get("price_range") as string) || null,
-    price_from: (formData.get("price_from") as string) || null,
+    price_from_cop: copAmount(formData.get("price_from_cop")),
+    price_unit: oneOf(formData.get("price_unit"), PRICE_UNITS, null),
+    price_type: oneOf(formData.get("price_type"), PRICE_TYPES, "fijo"),
     schedule: (formData.get("schedule") as string) || null,
     duration: (formData.get("duration") as string) || null,
     map_url: (formData.get("map_url") as string) || null,

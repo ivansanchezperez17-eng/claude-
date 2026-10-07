@@ -13,6 +13,10 @@ export type BusinessPlan = "basico" | "destacado" | "destacado_bilingue";
 
 export type AuthorizationChannel = "whatsapp" | "correo" | "firma" | "formulario";
 
+export type PriceUnit = "persona" | "noche" | "entrada" | "pieza" | "trayecto";
+
+export type PriceType = "fijo" | "voluntario" | "gratis";
+
 export type Business = {
   id: string;
   slug: string;
@@ -25,6 +29,9 @@ export type Business = {
   whatsapp: string | null;
   price_range: string | null;
   price_from: string | null;
+  price_from_cop: number | null;
+  price_unit: PriceUnit | null;
+  price_type: PriceType;
   schedule: string | null;
   duration: string | null;
   map_url: string | null;

@@ -5,6 +5,7 @@ import { attractions } from "@/lib/attractions";
 import { createClient } from "@/lib/supabase/server";
 import type { Business, Category } from "@/lib/types";
 import BusinessCard from "@/components/BusinessCard";
+import { getUsdCopRate } from "@/lib/settings";
 
 const categories: Category[] = [
   "experiencia",
@@ -25,28 +26,45 @@ export default async function HomePage({
   setRequestLocale(locale);
 
   const supabase = await createClient();
-  const { data: featured } = await supabase
-    .from("businesses")
-    .select("*")
-    .eq("category", "experiencia")
-    .eq("status", "aprobado")
-    .order("created_at", { ascending: false })
-    .limit(3);
+  const [{ data: featured }, usdRate] = await Promise.all([
+    supabase
+      .from("businesses")
+      .select("*")
+      .eq("category", "experiencia")
+      .eq("status", "aprobado")
+      .order("created_at", { ascending: false })
+      .limit(3),
+    getUsdCopRate(supabase),
+  ]);
 
-  return <Home locale={locale} featured={(featured ?? []) as Business[]} />;
+  return (
+    <Home
+      locale={locale}
+      featured={(featured ?? []) as Business[]}
+      usdRate={usdRate}
+    />
+  );
 }
 
-function Home({ locale, featured }: { locale: string; featured: Business[] }) {
+function Home({
+  locale,
+  featured,
+  usdRate,
+}: {
+  locale: string;
+  featured: Business[];
+  usdRate: number;
+}) {
   const t = useTranslations("home");
   const tAttractions = useTranslations("attractions");
 
   return (
     <div>
       <section
-        className="bg-gradient-to-b from-clay-dark to-clay bg-cover bg-center px-6 py-24 text-center text-white sm:py-32"
+        className="bg-cover bg-center px-6 py-24 text-center text-white sm:py-32"
         style={{
           backgroundImage:
-            "linear-gradient(to bottom, rgba(0,0,0,0.35), rgba(0,0,0,0.45)), url('/hero-barichara.jpg')",
+            "linear-gradient(to bottom, rgba(0,0,0,0.25), rgba(0,0,0,0.35)), url('/hero-barichara.jpg'), linear-gradient(to bottom, var(--clay-dark), var(--clay))",
         }}
       >
         <h1 className="mx-auto max-w-2xl font-serif text-4xl leading-tight sm:text-5xl">
@@ -73,7 +91,7 @@ function Home({ locale, featured }: { locale: string; featured: Business[] }) {
           </p>
           <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {featured.map((business) => (
-              <BusinessCard key={business.id} business={business} />
+              <BusinessCard key={business.id} business={business} usdRate={usdRate} />
             ))}
           </div>
         </section>
@@ -123,7 +141,7 @@ function Home({ locale, featured }: { locale: string; featured: Business[] }) {
           </p>
 
           <form
-            action="/directorio"
+            action={`/${locale}/directorio`}
             className="mx-auto mt-8 flex max-w-lg overflow-hidden rounded-full bg-white shadow-lg"
           >
             <input

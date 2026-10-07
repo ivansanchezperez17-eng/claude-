@@ -3,6 +3,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { createClient } from "@/lib/supabase/server";
 import { getDemoPassword } from "@/lib/demo";
 import BusinessDetail from "@/components/BusinessDetail";
+import { getUsdCopRate } from "@/lib/settings";
 import type { Business } from "@/lib/types";
 
 export default async function DemoBusinessPage({
@@ -34,6 +35,7 @@ export default async function DemoBusinessPage({
   }
 
   const t = await getTranslations("demo");
+  const usdRate = await getUsdCopRate(supabase);
 
   return (
     <>
@@ -42,7 +44,7 @@ export default async function DemoBusinessPage({
           {t("previewNotice")}
         </p>
       </div>
-      <BusinessDetail business={business} photos={[]} locale={locale} preview />
+      <BusinessDetail business={business} photos={[]} locale={locale} usdRate={usdRate} preview />
     </>
   );
 }

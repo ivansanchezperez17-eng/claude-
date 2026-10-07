@@ -2,6 +2,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { createClient } from "@/lib/supabase/server";
 import BusinessCard from "@/components/BusinessCard";
+import { getUsdCopRate } from "@/lib/settings";
 import type { Business, BusinessPhoto, Category } from "@/lib/types";
 
 const categories: Category[] = [
@@ -43,7 +44,10 @@ export default async function DirectoryPage({
     query = query.ilike("name", `%${q}%`);
   }
 
-  const { data: businesses } = await query;
+  const [{ data: businesses }, usdRate] = await Promise.all([
+    query,
+    getUsdCopRate(supabase),
+  ]);
   const list = (businesses ?? []) as Business[];
 
   const ids = list.map((b) => b.id);
@@ -84,6 +88,7 @@ export default async function DirectoryPage({
               key={business.id}
               business={business}
               photo={photoMap.get(business.id)}
+              usdRate={usdRate}
             />
           ))}
         </div>

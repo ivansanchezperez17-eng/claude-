@@ -1,16 +1,19 @@
 import { useTranslations } from "next-intl";
 import { photoUrl } from "@/lib/supabase/storage";
 import type { Business, BusinessPhoto } from "@/lib/types";
+import Price, { hasPrice } from "./Price";
 
 export default function BusinessDetail({
   business,
   photos,
   locale,
+  usdRate,
   preview = false,
 }: {
   business: Business;
   photos: BusinessPhoto[];
   locale: string;
+  usdRate: number;
   preview?: boolean;
 }) {
   const t = useTranslations("business");
@@ -18,9 +21,12 @@ export default function BusinessDetail({
   const description =
     locale === "en" ? business.description_en : business.description_es;
 
-  const facts: { label: string; value: string | null }[] = [
+  const facts: { label: string; value: React.ReactNode }[] = [
     { label: t("zone"), value: business.zone },
-    { label: t("priceFrom"), value: business.price_from },
+    {
+      label: t("priceFrom"),
+      value: hasPrice(business) ? <Price business={business} usdRate={usdRate} /> : null,
+    },
     { label: t("priceRange"), value: business.price_range },
     { label: t("schedule"), value: business.schedule },
     { label: t("duration"), value: business.duration },

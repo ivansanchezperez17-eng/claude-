@@ -2,15 +2,18 @@ import { useLocale, useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { photoUrl } from "@/lib/supabase/storage";
 import type { Business, BusinessPhoto } from "@/lib/types";
+import Price, { hasPrice } from "./Price";
 
 export default function BusinessCard({
   business,
   photo,
+  usdRate,
   basePath = "/negocio",
   showStatus = false,
 }: {
   business: Business;
   photo?: BusinessPhoto;
+  usdRate: number;
   basePath?: "/negocio" | "/demo";
   showStatus?: boolean;
 }) {
@@ -64,10 +67,12 @@ export default function BusinessCard({
           )}
         </div>
         <h3 className="font-serif text-lg text-clay-dark">{business.name}</h3>
-        {business.price_from && (
-          <span className="text-xs font-medium text-clay-dark">
-            {business.price_from}
-          </span>
+        {hasPrice(business) && (
+          <Price
+            business={business}
+            usdRate={usdRate}
+            className="text-xs font-medium text-clay-dark"
+          />
         )}
         {description && (
           <p className="line-clamp-2 text-sm text-foreground/70">

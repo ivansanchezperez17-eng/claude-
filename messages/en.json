@@ -9,7 +9,7 @@
   },
   "home": {
     "title": "Barichara, the most beautiful town in Colombia",
-    "subtitle": "Stone trails, canyons, waterfalls and craftsmanship: everything there is to do in Barichara, Santander.",
+    "subtitle": "Stone trails, colonial architecture, artisan workshops and the Camino Real: everything there is to do in Barichara, Santander.",
     "exploreCta": "See what to do",
     "featuredExperiencesTitle": "Featured experiences",
     "featuredExperiencesSubtitle": "Plans and tours to experience Barichara up close.",
@@ -102,5 +102,18 @@
   "privacy": {
     "title": "Privacy policy",
     "updated": "Last updated: October 2026"
+  },
+  "price": {
+    "from": "From",
+    "voluntary": "Pay what you want",
+    "free": "Free entry",
+    "approxUsd": "≈ {usd}, approximate",
+    "unit": {
+      "persona": "per person",
+      "noche": "per night",
+      "entrada": "per entry",
+      "pieza": "per piece",
+      "trayecto": "per trip"
+    }
   }
 }

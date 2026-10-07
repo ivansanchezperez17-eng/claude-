@@ -9,7 +9,7 @@
   },
   "home": {
     "title": "Barichara, el pueblo más lindo de Colombia",
-    "subtitle": "Caminos de piedra, cañones, cascadas y artesanía: todo lo que puedes hacer en Barichara, Santander.",
+    "subtitle": "Caminos de piedra, arquitectura colonial, talleres artesanales y el Camino Real: todo lo que puedes hacer en Barichara, Santander.",
     "exploreCta": "Ver qué hacer",
     "featuredExperiencesTitle": "Experiencias destacadas",
     "featuredExperiencesSubtitle": "Planes y tours para vivir Barichara de cerca.",
@@ -102,5 +102,18 @@
   "privacy": {
     "title": "Política de privacidad",
     "updated": "Última actualización: octubre de 2026"
+  },
+  "price": {
+    "from": "Desde",
+    "voluntary": "Pago voluntario",
+    "free": "Entrada libre",
+    "approxUsd": "≈ {usd}",
+    "unit": {
+      "persona": "por persona",
+      "noche": "por noche",
+      "entrada": "por entrada",
+      "pieza": "por pieza",
+      "trayecto": "por trayecto"
+    }
   }
 }

@@ -97,11 +97,14 @@ export default function BusinessForm({
       </div>
 
       <div className="grid gap-5 sm:grid-cols-3">
-        <Field label="Precio desde">
+        <Field label="Precio desde (en pesos, solo números)">
           <input
-            name="price_from"
-            placeholder="Desde $45.000"
-            defaultValue={business?.price_from ?? ""}
+            type="number"
+            name="price_from_cop"
+            min={0}
+            step={500}
+            placeholder="45000"
+            defaultValue={business?.price_from_cop ?? ""}
             className="w-full rounded-lg border border-stone px-3 py-2 outline-none focus:border-clay"
           />
         </Field>
@@ -120,6 +123,34 @@ export default function BusinessForm({
             defaultValue={business?.duration ?? ""}
             className="w-full rounded-lg border border-stone px-3 py-2 outline-none focus:border-clay"
           />
+        </Field>
+      </div>
+
+      <div className="grid gap-5 sm:grid-cols-3">
+        <Field label="El precio es">
+          <select
+            name="price_unit"
+            defaultValue={business?.price_unit ?? ""}
+            className="w-full rounded-lg border border-stone px-3 py-2 outline-none focus:border-clay"
+          >
+            <option value="">(sin unidad)</option>
+            <option value="persona">Por persona</option>
+            <option value="noche">Por noche</option>
+            <option value="entrada">Por entrada</option>
+            <option value="pieza">Por pieza</option>
+            <option value="trayecto">Por trayecto</option>
+          </select>
+        </Field>
+        <Field label="Tipo de precio">
+          <select
+            name="price_type"
+            defaultValue={business?.price_type ?? "fijo"}
+            className="w-full rounded-lg border border-stone px-3 py-2 outline-none focus:border-clay"
+          >
+            <option value="fijo">Precio fijo (usa el valor en pesos)</option>
+            <option value="voluntario">Pago voluntario</option>
+            <option value="gratis">Gratis</option>
+          </select>
         </Field>
       </div>
 
