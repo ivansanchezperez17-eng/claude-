@@ -42,7 +42,7 @@ export default async function DirectoryPage({
   const list = (businesses ?? []) as Business[];
 
   const ids = list.map((b) => b.id);
-  let photoMap = new Map<string, BusinessPhoto>();
+  const photoMap = new Map<string, BusinessPhoto>();
   if (ids.length > 0) {
     const { data: photos } = await supabase
       .from("business_photos")

@@ -1,36 +1,45 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Visit Barichara
 
-## Getting Started
+Directorio bilingüe (es/en) de hoteles, restaurantes y comercios de Barichara, Santander. Incluye panel de administración con CRUD de negocios y fotos, y un chat bot guía turístico impulsado por Claude.
 
-First, run the development server:
+Stack: Next.js 16 (App Router + Turbopack), next-intl, Supabase (Postgres + Auth + Storage), Anthropic SDK.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Configuración
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+1. Instalar dependencias:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+   ```bash
+   npm install
+   ```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+2. Crear un proyecto en [Supabase](https://supabase.com) y ejecutar `supabase/schema.sql` completo en el SQL Editor del proyecto. Esto crea las tablas `businesses` y `business_photos`, las políticas de RLS y el bucket público `business-photos`.
 
-## Learn More
+3. Crear el usuario administrador en **Authentication → Users** del proyecto de Supabase (correo + contraseña). Con ese usuario se inicia sesión en `/admin/login`.
 
-To learn more about Next.js, take a look at the following resources:
+4. Copiar `.env.example` a `.env.local` y completar:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+   - `NEXT_PUBLIC_SUPABASE_URL` y `NEXT_PUBLIC_SUPABASE_ANON_KEY`: en Project Settings → API del proyecto de Supabase.
+   - `ANTHROPIC_API_KEY`: en [console.anthropic.com](https://console.anthropic.com) (necesaria para el chat bot; sin ella el bot responde con un mensaje de "no configurado" en vez de fallar).
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+5. Levantar el servidor de desarrollo:
 
-## Deploy on Vercel
+   ```bash
+   npm run dev
+   ```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+   Abrir [http://localhost:3000](http://localhost:3000).
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Estructura
+
+- `app/[locale]/` — páginas públicas (inicio, directorio, detalle de negocio) y panel `/admin`.
+- `app/api/chat/` — endpoint del chat bot (usa Claude + la lista de negocios activos como contexto).
+- `lib/supabase/` — clientes de Supabase para navegador y servidor, y helper de URLs de Storage.
+- `lib/claude.ts` / `lib/barichara-guide.ts` — configuración del modelo y guía turística que alimenta el system prompt.
+- `messages/es.json`, `messages/en.json` — textos traducidos de la interfaz pública.
+- `supabase/schema.sql` — esquema de base de datos, políticas RLS y bucket de Storage.
+
+## Notas
+
+- Un negocio solo aparece en el sitio público si `active = true` (se usa como control de "pago al día").
+- Las fotos se guardan en el bucket `business-photos` de Supabase Storage, organizadas por `business_id`.
+- El chat bot solo recomienda negocios activos de la base de datos; si ninguno aplica, lo indica en vez de inventar.
